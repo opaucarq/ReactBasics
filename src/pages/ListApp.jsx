@@ -60,8 +60,9 @@ const Table02 = () => {
     setArray([...array, {title: "New Element", state: false}])
   }
   const onAddTask = (val) => {
-    if (val < 1) return;
-    const data = {title: val, state: false}
+    let valor = val.trim()
+    if (valor < 1) return;
+    const data = {title: valor, state: false}
     setArray(value=>([...value, data]))
   }
   return(
