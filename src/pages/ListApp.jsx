@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import AddTask from '../components/AddTask'
 
 const TableRowContent = ({n, title, state}) => {
   return(
@@ -71,6 +72,7 @@ const Table02 = () => {
           {array.map((item,index) => <TableRowContent key={index} n={index+1} title={item.title} state={item.state}/>  )}
         </tbody>
       </table>
+      <AddTask setArray={setArray}></AddTask>
       <button onClick={(e)=>handleClick(e)}>Add Element</button>
     </>
   )

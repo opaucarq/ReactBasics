@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const AddTask = () => {
+const AddTask = ({setArray}) => {
   const [inputValue, setInputValue] = useState('')
   const handleInput = (e) =>{
     setInputValue(e.target.value)
@@ -8,7 +8,9 @@ const AddTask = () => {
   }
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(inputValue)  
+    const data = {title: inputValue, state: false}
+    setArray(value=>([...value,data]))
+    setInputValue('')
   }
   return (
     <>
