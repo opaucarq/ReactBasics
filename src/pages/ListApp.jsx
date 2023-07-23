@@ -58,6 +58,10 @@ const Table02 = () => {
   const handleClick = (e) =>{
     setArray([...array, {title: "New Element", state: false}])
   }
+  const onAddTask = (val) => {
+    const data = {title: val, state: false}
+    setArray(value=>([...value, data]))
+  }
   return(
     <>
       <table border={2} bordercolor="red" >
@@ -72,7 +76,7 @@ const Table02 = () => {
           {array.map((item,index) => <TableRowContent key={index} n={index+1} title={item.title} state={item.state}/>  )}
         </tbody>
       </table>
-      <AddTask setArray={setArray}></AddTask>
+      <AddTask addTask={onAddTask}></AddTask>
       <button onClick={(e)=>handleClick(e)}>Add Element</button>
     </>
   )
