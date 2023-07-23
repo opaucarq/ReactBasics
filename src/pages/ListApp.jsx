@@ -2,12 +2,13 @@ import React, { useState } from 'react'
 import AddTask from '../components/AddTask'
 
 const TableRowContent = ({n, title, state}) => {
+  const [status, setStatus] = useState(state)
   return(
     <>
       <tr>
         <td>{n}</td>
         <td>{title}</td>
-        <td>{state ? '✅' : '❌'}</td>
+        <td onClick={(e)=>{setStatus(!status)}}>{ status ? '✅' : '❌'}</td>
       </tr>
     </>
   )
@@ -59,6 +60,7 @@ const Table02 = () => {
     setArray([...array, {title: "New Element", state: false}])
   }
   const onAddTask = (val) => {
+    if (val < 1) return;
     const data = {title: val, state: false}
     setArray(value=>([...value, data]))
   }
@@ -77,7 +79,7 @@ const Table02 = () => {
         </tbody>
       </table>
       <AddTask addTask={onAddTask}></AddTask>
-      <button onClick={(e)=>handleClick(e)}>Add Element</button>
+      
     </>
   )
 }
